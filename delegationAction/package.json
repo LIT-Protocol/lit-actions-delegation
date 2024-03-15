@@ -1,0 +1,20 @@
+{
+  "name": "delegationaction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "node esbuild.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@lit-protocol/auth-helpers": "^3.2.6",
+    "@lit-protocol/lit-node-client": "^3.2.6"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2"
+  }
+}

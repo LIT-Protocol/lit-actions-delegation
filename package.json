@@ -1,0 +1,24 @@
+{
+  "name": "pkp-capacity-credit-delegator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ipld/dag-pb": "^4.1.0",
+    "@lit-protocol/contracts-sdk": "^3.2.6",
+    "@lit-protocol/lit-node-client": "^3.2.6",
+    "@pinata/sdk": "^2.1.0",
+    "base58-js": "^2.0.0",
+    "dotenv": "^16.4.5",
+    "esbuild-plugin-polyfill-node": "^0.3.0",
+    "ethers": "^5.7.2",
+    "multiformats": "^13.1.0",
+    "siwe": "^2.1.4"
+  }
+}
