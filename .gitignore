@@ -4,3 +4,4 @@ pkp.json
 delegationAction/node_modules
 delegationAction/bundled.js
 exampleDelegationSig.json
+.DS_Store
