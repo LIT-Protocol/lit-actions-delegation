@@ -95,12 +95,13 @@ async function main() {
     "Generated session sigs!  now you can use them to execute a lit action or for any other request to Lit."
   );
 
-  const authSig = await getAuthSig(userWallet);
+  // you can uncomment this, and then use it below, to show that the request would fail without the capacity delegation signature.  You should also comment out the "sessionSigs" line in the executeJs function.
+  //   const authSig = await getAuthSig(userWallet);
 
   const results = await litNodeClient.executeJs({
     code: "LitActions.setResponse({response: JSON.stringify({hello: 'world'})})",
-    // sessionSigs,
-    authSig,
+    sessionSigs,
+    // authSig,
     jsParams: {},
   });
   console.log("response: ", results.response);
