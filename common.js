@@ -3,16 +3,24 @@ const ethers = require("ethers");
 const siwe = require("siwe");
 const pinataSDK = require("@pinata/sdk");
 const { Readable } = require("stream");
+const {
+  LitActionResource,
+  RecapSessionCapabilityObject,
+  LitAbility,
+} = require("@lit-protocol/auth-helpers");
+const siwe = require("siwe");
 
+// just gets a generic signer
 function getSigner() {
   const provider = new ethers.providers.JsonRpcProvider(
     "https://chain-rpc.litprotocol.com/http"
   );
-  const privateKey = process.env.LIT_ROLLUP_MAINNET_DEPLOYER_PRIVATE_KEY;
+  const privateKey = process.env.LIT_CHRONICLE_PRIVATE_KEY;
   const wallet = new ethers.Wallet(privateKey, provider);
   return wallet;
 }
 
+// gets a generic auth sig that can be used for anything
 async function getAuthSig(wallet) {
   const address = await wallet.getAddress();
 
@@ -43,19 +51,6 @@ async function getAuthSig(wallet) {
   };
 
   return authSig;
-}
-
-async function uploadLitAction({ code, PINATA_API_KEY, PINATA_SECRET_KEY }) {
-  const pinata = new pinataSDK(PINATA_API_KEY, PINATA_SECRET_KEY);
-  const buffer = Buffer.from(code, "utf8");
-  const stream = Readable.from(buffer);
-
-  stream.path = "string.txt";
-
-  const res = await pinata.pinFileToIPFS(stream, {
-    pinataMetadata: { name: "string.txt" },
-  });
-  return res;
 }
 
 module.exports = { getSigner, getAuthSig, uploadLitAction };
