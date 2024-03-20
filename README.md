@@ -32,17 +32,16 @@ Next run `./mintCC.js` to mint a capacity credit NFT. This NFT will be sent to t
 
 Run `./delegate.js` to create a delegation signature. This code would be run inside your app, and the signature would be returned. For this example, the signature is written to exampleDelegationSig.json. In real life, you could use the capacityDelegationAuthSig in the getSessionSigs() function for your user, which can be seen in the docs here: https://developer.litprotocol.com/v3/sdk/capacity-credits#generating-sessions-from-delegation-signature
 
-// for example:
-/_
+for example:
+
+```
 let sessionSigs = await litNodeClient.getSessionSigs({
-expiration: new Date(Date.now() + 1000 _ 60 _ 60 _ 24).toISOString(), // 24 hours
-chain: 'ethereum',
-resourceAbilityRequests: [
-{
-resource: new LitActionResource('*'),
-ability: LitAbility.LitActionExecution,
-},
-],
-capacityDelegationAuthSig,
+    expiration: new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString(), // 24 hours
+    chain: 'ethereum',
+    resourceAbilityRequests: [{
+        resource: new LitActionResource('*'),
+        ability: LitAbility.LitActionExecution,
+    }, ],
+    capacityDelegationAuthSig,
 });
-\*/
+```
